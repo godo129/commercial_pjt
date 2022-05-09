@@ -1,11 +1,9 @@
 from django.urls import path
-# from .views import (
-#     # users/views.py의 function 이름 
-# )
+from . import views
 
 
 app_name='users'
 
 urlpatterns = [
-    
+    path("signup", views.signup, name="signup")
 ]

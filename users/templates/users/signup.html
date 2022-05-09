@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <span>signup html 적용중</span>
+  <form action="{% url 'users:signup' %}">
+    <input type="text">
+    <input type="password">
+    <input type="password">
+  </form>
+{% endblock %}

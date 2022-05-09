@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <span>login html 적용중</span>
+  <form action="{% url 'users:login' %}">
+    <input type="text">
+    <input type="password">
+  </form>
+{% endblock %}

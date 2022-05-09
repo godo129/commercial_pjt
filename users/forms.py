@@ -17,8 +17,5 @@ class  CustomUserCreationForm(UserCreationForm):
 
 
 class CustomLoginForm(AuthenticationForm):
-    
-    class Meta(AuthenticationForm.Meta):
-        model = User
-        fields = AuthenticationForm.Meta.fields
+    fields = 'all'
 
