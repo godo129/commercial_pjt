@@ -5,5 +5,8 @@ from . import views
 app_name='users'
 
 urlpatterns = [
-    path("signup", views.signup, name="signup")
+    path("signup/", views.signup, name="signup"),
+    path('login/', views.login, name="login"),
+    path('login/kakao/', views.kakao_login, name="kakao-login"),
+    path('login/kakao/callback/', views.kakao_login_callback, name="kakao-callback"),
 ]

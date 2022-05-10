@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
+{% block style %}
+
+{% endblock %}    
 {% block content %}
   <span>login html 적용중</span>
   <form action="{% url 'users:login' %}">
     <input type="text">
     <input type="password">
   </form>
+  <button id="kakao-login">
+    <a href="{% url 'users:kakao-login' %}">
+      <img src="\static\images\kakao_login_medium_wide.png" alt="kakao-login">
+    </a>
+  </button>
 {% endblock %}
