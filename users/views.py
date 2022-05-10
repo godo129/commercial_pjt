@@ -53,3 +53,10 @@ def kakao_login_callback(request):
     error = token_json.get("error", None)
 
     return render(request, 'users/success.html')
+
+
+def kakao_logout(request):
+    REST_API_KEY = key
+    LOGOUT_REDIRECT_URI = "http://127.0.0.1:8000/users/login/"
+    url = f"https://kauth.kakao.com/oauth/logout?client_id={REST_API_KEY}&logout_redirect_uri={LOGOUT_REDIRECT_URI}"
+    return redirect(url)
