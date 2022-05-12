@@ -1,34 +1,66 @@
 from django.shortcuts import (
-    render, redirect, reverse
+    render, redirect, get_object_or_404
 )
-from django.contrib import messages
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth import (
+    get_user_model,
+    login as auth_login,
+    logout as auth_logout,
+)
+from django.contrib.auth.decorators import login_required
+import requests
 from .forms import (
     CustomUserCreationForm,
     CustomLoginForm,
 )
-from django.http import JsonResponse
-import requests
 
 
 # 나중에 key는 가릴 것
 key = '07fb27a0628c6bde6abb9e4bd5ea463e'
 
+
 # Create your views here.
+@require_http_methods(['GET','POST'])
 def signup(request):
-    form = CustomUserCreationForm()
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('main:main')
+    else:        
+        form = CustomUserCreationForm()
     context = {
         'form': form,
     }
     return render(request, 'users/signup.html', context)
 
 
+@require_http_methods(['GET','POST'])
 def login(request):
-    form = CustomLoginForm()
+    if request.user.is_authenticated:
+        return redirect('main:main')
+    if request.method == 'POST':
+        form = CustomLoginForm(request, request.POST)
+        if form.is_valid():
+            auth_login(request, form.get_user())
+            return redirect('main:main')
+        else:
+            print(form.errors)
+            
+    else:
+        form = CustomLoginForm()
     context = {
         'form': form,
     }
     return render(request, 'users/login.html', context)
 
+
+@login_required
+def logout(request):
+    auth_logout(request)
+    return redirect('main:main')
+    
 
 def kakao_login(request):
     REST_API_KEY = key
@@ -52,7 +84,7 @@ def kakao_login_callback(request):
     token_json = token_request.json()
     error = token_json.get("error", None)
 
-    return render(request, 'users/success.html')
+    return redirect('main:main')
 
 
 def kakao_logout(request):
