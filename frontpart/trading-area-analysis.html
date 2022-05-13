@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./side_menu_style.css">
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style> 
+        .banner-image {
+            position: fixed;
+        }
+        .login {
+            position: absolute;
+            z-index: 10;
+        }
+        .login-image { 
+            position: absolute;
+            margin-top: 10px;
+            left: 95%;
+        }
+        .home {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+        }
+ 
+    </style>
+
+    <style>
+        .analysis {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <img class="banner-image" src="./banner_image.jpeg" width="100%" height="90px">
+        <a href="./side_menu_template.html"><img class="home" src="./" height="90px" width="20%"></a>
+        <a href="./login.html"><img class="login-image" src="./avatar.svg" alt="" class="login" height="60" width="60"></a>
+    </div>
+
+    <input type="checkbox" id="check" checked>
+    <label for="check">
+        <i class="fas fa-bars" id='btn'></i>
+        <i class='fas fa-times' id='cancel'></i>
+    </label>
+
+    <div class="sidebar">
+        <header>상권분석 서비스</header>
+        <ul>
+            <li class="analysis">
+                <label for="gu" style="color: white; font-size: 20px;">구 : </label>
+                <select name="gu" style="width: 80px; height: 30px; font-size: 20px;">
+                    <option value="A">강남구</option>
+                    <option value="B">서초구</option>
+                    <option value="-">Other</option>
+                  </select>
+
+                <label for="dong" style="color: white; font-size: 20px;">동 : </label>
+                <select name="dong" style="width: 80px; height: 30px; font-size: 20px;">
+                    <option value="A">신사동</option>
+                    <option value="B">논현1동</option>
+                    <option value="-">Other</option>
+                </select>
+                <br>
+                <label for="budget" style="color: white; font-size: 20px;">예산(만원)</label>
+                <input type="number">
+                <a href="./analysis-result.html"><button style="margin-left: -30px; width: 200px; height: 40px;">분석하기</button></a>
+                
+
+            </li>
+            <li><a href="./bullet-board.html"><i class="fas fa-link"></i>게시판</a></li>
+            <li><a href="#"><i class="fas fa-stream"></i>Overview</a></li>
+            <li><a href="#"><i class="fas fa-calendar-week"></i>Events</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i>About</a></li>
+            <li><a href="#"><i class="fas fa-sliders-h"></i>Services</a></li>
+            <li><a href="./question.html"><i class="fas fa-envelope"></i>문의</a></li>
+        </ul>
+    </div>
+
+    <section>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f41b1ff2ad82b80875f4529dbb8dedf1"></script>
+        <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        </script>
+
+    </section>
+    
+</body>
+</html>
