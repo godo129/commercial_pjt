@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block style %}
+
+{% endblock %}    
+{% block content %}
+  <form action="{% url 'users:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label" >아이디</label>
+      <input type="text" name='username' class="form-control" id="user-id">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">비밀번호</label>
+      <input type="password" name='password' class="form-control" id="user-password">
+    </div>
+    <button type="submit" class="btn btn-primary">로그인</button>
+  </form>
+  <button id="kakao-login">
+    <a href="{% url 'users:kakao-login' %}">
+      <img src="\static\images\kakao_login_medium_wide.png" alt="kakao-login">
+    </a>
+  </button>
+{% endblock %}
